@@ -2,7 +2,20 @@ import Card from "../src/card";
 import Deck from "../src/deck"
 
 describe('deck tests', () => {
-  it('creates new deck', () => {
+  it('creates empty deck', () => {
+    const d = new Deck(false);
+    expect(d).toBeTruthy();
+    expect(d.cardsRemaining()).toEqual(0);
+  })
+
+  it('adds a card to a deck', () => {
+    const d = new Deck(false);
+    d.add(new Card('Clubs', '10'));
+    expect(d.cardsRemaining()).toEqual(1);
+    expect(d.showTopCard()).toEqual(new Card('Clubs', '10'));
+  })
+
+  it('creates new deck with cards', () => {
     const d = new Deck();
     expect(d).toBeTruthy();
     expect(d.cardsRemaining()).toEqual(52);
